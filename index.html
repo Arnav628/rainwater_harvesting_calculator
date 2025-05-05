@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rainwater Harvesting Calculator</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body onload="loadExcelFromServer()">
+  <div class="container">
+    <h2>Rainwater Harvesting Calculator</h2>
+
+    <!-- 1. Location -->
+    <label>Latitude: <input type="number" id="latitude" step="any" /></label><br />
+    <label>Longitude: <input type="number" id="longitude" step="any" /></label><br /><br />
+
+    <!-- 2. Rooftop Area -->
+    <label>Rooftop Area (sq. meters): <input type="number" id="area" step="any" /></label><br /><br />
+
+    <!-- 3. Cumulative Rainfall -->
+    <label for="cumulativeDays">Cumulative Rainfall Days:</label>
+    <input type="number" id="cumulativeDays" min="1" placeholder="e.g., 10">
+    <button onclick="applyCumulativeDays(parseInt(document.getElementById('cumulativeDays').value))">Apply</button>
+    <button onclick="resetRainfallData()">Reset</button>
+    <br /><br />
+
+    <!-- 4. Calculate Q -->
+    <button onclick="calculate()">Calculate Harvested Water</button>
+    <p id="outputQ"></p>
+    <p id="intensity"></p>
+
+    <!-- 5. Tank Section -->
+    <div id="tankSelection" style="display: none;">
+      <!-- Tank Type -->
+      <h3>Select Tank Type</h3>
+      <select id="tankShape" onchange="toggleTankInputs()">
+        <option value="cylinder">Cylindrical</option>
+        <option value="rectangle">Rectangular</option>
+      </select>
+
+      <!-- Tank Dimensions -->
+      <div id="cylinderInputs" style="display: none; margin-top: 10px;">
+        Radius (m): <input type="number" id="cylinderRadius" step="any" />
+        or Height (m): <input type="number" id="cylinderHeight" step="any" />
+      </div>
+
+      <div id="rectInputs" style="display: none; margin-top: 10px;">
+        Height (m): <input type="number" id="rectHeight" step="any" />
+        or Length (m): <input type="number" id="rectLength" step="any" />
+        (Length = 2 * Breadth)
+      </div>
+
+      <button onclick="calculateTank()">Calculate Tank Dimensions</button>
+      <p id="outputDimensions"></p>
+
+      <!-- Tank Material -->
+      <h3>Select Tank Material</h3>
+      <select id="tankMaterial">
+        <option value="concrete">Concrete</option>
+        <option value="plastic">Plastic</option>
+        <option value="steel">Steel</option>
+      </select>
+
+      <!-- Optional Q Input -->
+      <h4>Or Enter Water in Liters for Direct Cost Estimation:</h4>
+      <input type="number" id="userQLiters" placeholder="Enter in liters" />
+
+      <button onclick="calculateCost()">Estimate Cost</button>
+      <p id="outputCost"></p>
+
+      <!-- Groundwater Recharge -->
+      <h3>Groundwater Recharge Estimator</h3>
+      <div class="recharge-inputs">
+        <label>
+          Number of Family Members:
+          <input type="number" id="familyMembers" min="1">
+        </label>
+        <label>
+          Number of Days:
+          <input type="number" id="usageDays" min="1">
+        </label>
+      </div>
+      <button onclick="calculateRecharge()">Calculate Groundwater Recharge</button>
+      <p id="rechargeOutput"></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
