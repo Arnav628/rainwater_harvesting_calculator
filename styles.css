@@ -1,0 +1,88 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                url('images/rain1.jpg') no-repeat center center fixed;
+    background-size: cover;
+    text-align: center;
+    color: white;
+    padding: 50px;
+}
+
+.container {
+    background: rgba(0, 0, 0, 0.6); 
+    padding: 30px;
+    border-radius: 10px;
+    display: inline-block;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.5);
+    width: 50%;
+}
+
+input, button, select {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+}
+
+button {
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+select {
+    background-color: white;
+    color: black;
+}
+
+p {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.recharge-inputs {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    
+}
+
+.recharge-inputs label {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: white;
+    font-size: 16px;
+}
+
+.recharge-inputs input {
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+    margin-top: 5px;
+    font-size: 16px;
+}
+
+#cumulativeDays {
+    width: 100px;
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+    margin-left: 10px;
+    font-size: 14px;
+}
+
+button {
+    margin: 5px;
+}
+
+
